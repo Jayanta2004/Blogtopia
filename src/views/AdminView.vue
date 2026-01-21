@@ -219,6 +219,10 @@ const saveBlog = async () => {
     return
   }
 
+  // Temporarily disabled
+  alert('Blog creation is temporarily disabled')
+  return
+
   loading.value = true
 
   try {

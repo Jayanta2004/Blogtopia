@@ -68,7 +68,6 @@
                 {{ Math.ceil(timeRemaining) }} min left
               </div>
             </div>
-            <router-link :to="`/admin/edit/${blog.id}`" class="btn btn-secondary btn-sm">Edit Blog</router-link>
           </div>
           <div class="blog-meta-nav">
             <time class="blog-date">{{ formatDate(blog.created_at) }}</time>

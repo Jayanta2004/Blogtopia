@@ -96,7 +96,6 @@
                 
                 <div class="blog-actions">
                   <router-link :to="`/blog/${blog.id}`" class="read-more-btn">Read Article</router-link>
-                  <router-link :to="`/admin/edit/${blog.id}`" class="edit-btn">Edit</router-link>
                 </div>
               </div>
             </article>
@@ -470,7 +469,7 @@ const formatDate = (dateString) => {
 
 .blog-actions {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
 }
 
