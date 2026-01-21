@@ -4,12 +4,16 @@
       <div class="header-content">
         <h1 class="logo">Blogtopia Admin</h1>
         <div class="header-actions">
-          <button @click="() => setTheme(theme === 'light' ? 'dark' : 'light')" class="theme-btn" title="Toggle theme">
+          <button @click="toggleTheme" class="theme-btn" :title="`Switch to ${nextTheme} theme`">
             <svg v-if="theme === 'light'" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
               <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
             </svg>
+            <svg v-else-if="theme === 'dark'" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 616.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
             <svg v-else class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"></path>
+              <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
+              <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"></path>
             </svg>
           </button>
           <router-link to="/" class="btn btn-secondary btn-sm">Back to Blogs</router-link>
@@ -132,6 +136,16 @@ const router = useRouter()
 const route = useRoute()
 const loading = ref(false)
 const { theme, setTheme } = useTheme()
+
+const nextTheme = computed(() => {
+  const themes = ['light', 'dark', 'sepia']
+  const currentIndex = themes.indexOf(theme.value)
+  return themes[(currentIndex + 1) % themes.length]
+})
+
+const toggleTheme = () => {
+  setTheme(nextTheme.value)
+}
 
 const isEditing = computed(() => route.name === 'edit')
 const blogId = computed(() => route.params.id)
