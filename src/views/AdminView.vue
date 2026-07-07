@@ -220,8 +220,8 @@ const saveBlog = async () => {
   }
 
   // Temporarily disabled
-  alert('Blog creation is temporarily disabled')
-  return
+  // alert('Blog creation is temporarily disabled')
+  // return
 
   loading.value = true
 
